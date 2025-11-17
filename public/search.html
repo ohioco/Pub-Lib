@@ -10,9 +10,7 @@
 
 <div class="navbar">
     <div class="logo">FileVault</div>
-    <div>
-        <a href="/"><button>Home</button></a>
-    </div>
+    <div><a href="/" class="button">Home</a></div>
 </div>
 
 <div class="container">
@@ -27,16 +25,14 @@
                 <th>Action</th>
             </tr>
         </thead>
-        <tbody id="resultsBody">
-        </tbody>
+        <tbody id="resultsBody"></tbody>
     </table>
 </div>
 
 <script src="js/main.js"></script>
 <script>
 async function loadResults(){
-    const urlParams = new URLSearchParams(window.location.search);
-    const q = urlParams.get('q') || '';
+    const q = new URLSearchParams(window.location.search).get('q') || '';
     const res = await fetch('/api/search?q=' + encodeURIComponent(q));
     const files = await res.json();
     const tbody = document.getElementById('resultsBody');
@@ -48,7 +44,7 @@ async function loadResults(){
             <td>${f.owner}</td>
             <td>${(f.size/1024).toFixed(1)} KB</td>
             <td>${new Date(f.mtime).toLocaleString()}</td>
-            <td>${f.owner==='Public' ? '' : `<button class="delete-btn" onclick="deleteFile('${f.name}')">Delete</button>`}</td>
+            <td>${f.owner!=='Public'?`<button class="delete-btn" onclick="deleteFile('${f.name}')">Delete</button>`:''}</td>
         `;
         tbody.appendChild(tr);
     });
