@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FileVault Library</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="navbar">
+    <div class="logo">FileVault</div>
+    <div>
+        <button id="uploadBtn">Upload</button>
+        <a href="/login.html"><button>Login</button></a>
+        <a href="/register.html"><button>Sign Up</button></a>
+    </div>
+</div>
+
+<div class="container">
+    <h1>Welcome to FileVault Library</h1>
+    <form id="searchForm">
+        <input type="text" id="searchInput" placeholder="Search files...">
+        <button class="search-btn" type="submit">Search</button>
+    </form>
+</div>
+
+<!-- Upload Modal -->
+<div id="uploadModal" class="modal">
+    <div class="modal-content">
+        <span id="closeUpload" style="float:right;cursor:pointer;">&times;</span>
+        <h2>Upload File</h2>
+        <form id="uploadForm">
+            <input type="file" name="file" required><br>
+            <label>
+                <input type="radio" name="visibility" value="public" checked> Public
+            </label>
+            <label>
+                <input type="radio" name="visibility" value="private"> Private
+            </label><br>
+            <button class="upload-btn" type="submit">Upload</button>
+        </form>
+    </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
